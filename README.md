@@ -38,27 +38,41 @@ Corperate actually makes you sound like a real person. See the below email excha
 
 ```
 Subject: Project Delay (Payment Cluster Deployment)
-Original Recipient: Ainsley
-Date: July 28, 2028, 10:28 AM
-
-Hey Vivian,
-    Hope you're having a wonderful day, and that this email finds you well. I'm emailing you concerning an unexpected
-delay me and my team have encounted. For instance, two serious production-exclusive bugs have been found that require
-reworking our architecture. Just wanted to run changing the project deadline up the flagpoll, and I hope we can sort
-this out and not involve upper management, but if nessisary I'll add Claire and Carolina to this chain.
-
-Cheers!
-
-~~~~~~~~
-
-Subject: Project Delay
 Original Recipient: N/A
 Date: Jule 28, 2028, 11:03 AM
 
 Hi Ainsley,
+    Regretfully, I must bring to attension two bugs that might effect our bottom line, as fixing these would require
+a substantial delay. Following up on your meeting, would you be willing to commucate in person once more? Just wanted
+to run changing the project deadline up the flagpoll, and I hope we can sort this out and not involve upper management,
+but if nessisary I'll ping Claire and Carolina and have them in the loop regarding this chain. Lets consider our clients
+first and foremost, but we may have have to table this to reach our bottom line. I'd like to sincerely apologize to our
+clients, if this doesn't work out.
+
+    Regretfully,
+    Vivian
 
 
+
+Subject: Project Delay (Payment Cluster Deployment)
+Original Recipient: Ainsley
+Date: July 28, 2028, 10:28 AM
+
+Hey Vivian,
+    Hope you're having a wonderful day, and that this email finds you well. Concerning those two points you've brought up
+concerning an unexpected that you and your team have encounted. We don't currently have any leway here, as our next deployment
+is only four days away. With two more serious production-exclusive bugs, I'm afraid that this won't track well with your
+record here. We can keep deploying the legacy code, but that would require us providing very slow service. It's always an option,
+but it would be much better if you could have your team crunch, and get us the software we need to keep providing the exelent
+service that this company is known for. We may have to incude upper management if this doesn't work out.
+
+    Kind regards,
+    Ainsley
 ```
+
+### Start
+
+Code execution will always start with the first class, and the first method inside that class.
 
 ### Eggs
 
@@ -73,7 +87,8 @@ choice for the job, but instead because Java has the word "Enterprise" next to i
 the primitive Integer and String.
 
 A class is simply a new email. Take the above chain as an example; we have both the classes "Hey" and "Hi". You can
-use these classes to house methods, and thus functionality.
+use these classes to house methods, and thus functionality. A new class is marked with three new lines, `Subject`
+with no tab before it, followed by `Original Recipient` and `Date`. After that, is the start of a new class/email.
 
 The name of a class is taken either from the parentheses after the subject, or from the date ("yesterday", "2 days ago",
 "1 week and 2 days ago") are all perfectly valid.
@@ -91,19 +106,31 @@ That's part of the fun!
 ### Methods
 
 Each method is defined by a block of text starting with a tab and ending with a new line. The name of the method is
-the number of words (delimiters " ", ",", ":", ";", "--", "(",  and ")") that are present in the first sentense.
+the number of words (delimiters " ", ",", ":", ";", "--", "(",  and ")") that are present in the first sentense. Static
+methods do not exist.
 
 You can call a method in another class by saying:
 
 ```
 (<eggs>see the <method name><eggs> interation stated <class ID><eggs>)
-
-or
-
 , namely the <method name><eggs> requirement <eggs> referenced <class ID>
+. Following up on your <class ID>, would you be willing to <method name>?
 ```
 
-The `--` (double hyphen) might look weird, but it's [perfectly valid](https://english.stackexchange.com/a/254370).
+The `--` (double hyphen) might look weird, but it's [perfectly valid](https://english.stackexchange.com/a/254370). You can
+also specify a class one email in the future with `<x>`. You can reference classes up to 10 emails in the future,
+by the following:
+
+1. x = 1, "meeting"
+2. x = 2, "conference"
+3. x = 3, "chat"
+4. x = 4, "call"
+5. x = 5, "note"
+6. x = 6, "letter"
+7. x = 7, "download"
+8. x = 8, "uplink"
+9. x = 9, "conversation"
+10. x = 10, "consultation"
 
 You can call a method in the same class by saying:
 
@@ -229,6 +256,19 @@ don't like <number of elements>
 
 The result will be popped onto the stack, and the elements that are used
 will be popped off. You can then store this in a variable.
+
+## Printing
+
+You can print to the console by specifying a key word, and then the variable
+you want to print.
+
+```
+apologize to <variable>
+state <variable>
+tell <variable>
+say <variable>
+print <variable>
+```
 
 # That's about it!
 
