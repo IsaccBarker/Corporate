@@ -28,7 +28,7 @@ Corperate is a turing complete language, which means you can calculate anything 
 verything your heart can desire! It can't yet actually interact with the system itself (besides writting
 to stdout), but we're working on that ;)
 
-Corperate scripts should end in the `.email`, `.msg`, or '.eml' file extension. However, corperate scripts
+Corperate scripts should end in the `.email`, `.msg`, or `.eml` file extension. However, corperate scripts
 cannot call other corperate scripts.
 
 ### Sound like a human
@@ -78,6 +78,16 @@ use these classes to house methods, and thus functionality.
 The name of a class is taken either from the parentheses after the subject, or from the date ("yesterday", "2 days ago",
 "1 week and 2 days ago") are all perfectly valid.
 
+All class variables are public, and you can assign to them like so:
+
+```
+remember
+<probably not> forget
+```
+
+You cannot pre-define class variables in Corperate. You just have to run a method, and hope that you convey your message.
+That's part of the fun!
+
 ### Methods
 
 Each method is defined by a block of text starting with a tab and ending with a new line. The name of the method is
@@ -117,7 +127,7 @@ on the email <eggs> <class ID>
 loop back into <eggs> <class ID>
 ```
 
-When referencing a class, please put the word `renference` before the class identifier.
+When referencing a class, please put the word `reference` before the class identifier.
 
 If you don't wish to use a Integer literal, as it might not sound professional, you can do what you might do in the
 Rockstar programming language and modulo 10 the length of words, followed up by a period:
@@ -128,6 +138,20 @@ don't feel comfortable
 4 % 10   4 % 10   10 % 10
 
 440
+```
+
+## Variables
+
+You can define a variable like so:
+
+```
+put <variable name> on the docket
+```
+
+You can set the value of a variable to be:
+
+```
+request that <variable name> be <constant>
 ```
 
 ## Number of elements
@@ -205,4 +229,6 @@ don't like <number of elements>
 
 The result will be popped onto the stack, and the elements that are used
 will be popped off. You can then store this in a variable.
+
+# That's about it!
 
