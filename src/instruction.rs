@@ -7,8 +7,9 @@ const MOD_RE: &str = r#"\s+(remainder)\s+/gmi"#;
 const POP_RE: &str = r#"\s+(I don't have the bandwidth to|let's drop)\s+/gmi"#;
 const PUSH_RE: &str = r#"\s+(I'd like to consider|bring to attension)\s+/gmi"#;
 
-// (.+see the <function name>.+ interation stated (yesterday|today|.+ago).+)
-//
+// -- (.+see the <function name>.+ interation stated (yesterday|today|.+ago).+)
+//  (.*see the (last )?(meeting|conference|chat|call|note|letter|download|uplink|conversation|consultation).+referenced (yesterday|today|.+ ago).+)
+//  (, namely .* (last )?(meeting|conference|chat|call|note|letter|download|uplink|conversation|consultation).+referenced (yesterday|today|.+ ago).*)
 
 pub enum Instruction {
     CallFunction { class: String, function: String },
