@@ -96,18 +96,17 @@ The name of a namespace is taken either from the parentheses after the subject, 
 
 ### Functions
 
-Each function is defined by a block of text starting with a tab and ending with a new line. The name of the function is
-the number of words (delimiters " ", ",", ":", ";", "--", "(",  and ")") that are present in the first sentense.
+Each function is defined by a block of text starting with a tab and ending with a new line.
 
 You can call a function in another namespace by saying:
 
 ```
-(<eggs>see the <function name><eggs> interation stated <namespace ID><eggs>)
-, namely the <function name><eggs> requirement <eggs> referenced <namespace ID>
-. Following up on your <namespace ID>, would you be willing to <function name>?
+(<eggs>see the <function name> <eggs> where our interation stated <namespace ID><eggs>)
+, namely the <function name> <eggs> referenced <namespace ID>
 ```
 
-You can reference namespacees up to 10 emails in the future, by the following:
+In order to specifiy a function name, you must use the below list. To specify a namespace in the future,
+just the below list as is. If you want to reference an email in the past, just prefix it with `last`.
 
 1. x = 1, "meeting"
 2. x = 2, "conference"
@@ -161,11 +160,11 @@ I'd like to consider <things>
 bring to attension <things>
 ```
 
-You can also pop things from the stack like so:
+You can also pop from the stack like so:
 
 ```
-let's drop <number of element>
-I don't have the bandwidth to <eggs> <thing>
+let's drop
+I don't have the bandwidth to
 ```
 
 ## Arithmetic
