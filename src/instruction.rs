@@ -1,3 +1,8 @@
+use crate::error;
+
+use std::process;
+use log::debug;
+
 const PRINT_RE: &str = r#"\s*(apologize|state|tell|say|print)\s*/gmi"#;
 const ADD_RE: &str = r#"\s*(add|include|\. with)\s*/gmi"#;
 const SUB_RE: &str = r#"\s*(subtract|discontinue|ignore|\. without)\s*/gmi"#;
@@ -17,15 +22,36 @@ pub enum Instruction {
     Print,
     Add,
     Sub,
-    Mult,
-    Div,
     Pop,
     Push { data: String },
     IfEquals,
-    IfNequals,
     IfLess,
-    IfGreater,
     Goto { to: usize },
+}
+
+fn get_int_from_stack(stack: &Vec<String>, get: usize) -> i32 {
+    match stack.get(stack.len()-(1-get)) {
+        Some(s) => match s.parse::<i32>() {
+            Ok(s) => s,
+            Err(e) => { debug!("Could not parse int"); error::print_error(); process::exit(-1); }
+        },
+
+        None => { debug!("Stack underflow"); error::print_error(); process::exit(-1); }
+    }
+}
+
+fn get_from_stack(stack: &Vec<String>, offset: usize) -> String {
+    match stack.get(stack.len()-(1-offset)) {
+        Some(s) => s.to_string(),
+        None => { debug!("Stack underflow"); error::print_error(); process::exit(-1); }
+    }
+}
+
+fn get_a_b(stack: &Vec<String>, offset: usize) -> (i32, i32) {
+    let a = get_int_from_stack(stack, 0);
+    let b = get_int_from_stack(stack, 1);
+
+    (a, b)
 }
 
 pub fn execute(instructions: &Vec<Instruction>) {
@@ -33,44 +59,45 @@ pub fn execute(instructions: &Vec<Instruction>) {
     let mut ip: usize = 0;
 
     loop {
-        let instruction = instructions.get(ip).unwrap();
-        let modify_ip = false;
+        let mut modify_ip = false;
+        let instruction = match instructions.get(ip) {
+            Some(instruction) => instruction,
+            None => break,
+        };
 
         match instruction {
             Instruction::Print => {
-                println!("{}", stack.get(stack.len()-1).unwrap());
+                println!("{}", get_from_stack(&stack, 0));
             }
 
             Instruction::Add => {
-                let a = stack.get(stack.len()-1).unwrap().parse::<i32>().unwrap();
-                let b = stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap();
+                let (a, b) = get_a_b(&stack, 0);
 
                 stack.truncate(stack.len()-2);
                 stack.push((a + b).to_string());
             }
 
             Instruction::Sub => {
-                let a = stack.get(stack.len()-1).unwrap().parse::<i32>().unwrap();
-                let b = stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap();
+                let (a, b) = get_a_b(&stack, 0);
 
                 stack.truncate(stack.len()-2);
                 stack.push((a - b).to_string());
             }
 
-            Instruction::Mult => {
-                let a = stack.get(stack.len()-1).unwrap().parse::<i32>().unwrap();
-                let b = stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap();
+            Instruction::IfEquals => {
+                let (a, b) = get_a_b(&stack, 1);
 
-                stack.truncate(stack.len()-2);
-                stack.push((a * b).to_string());
+                if a == b {
+                    ip = get_int_from_stack(&stack, 0) as usize;
+                }
             }
 
-            Instruction::Div => {
-                let a = stack.get(stack.len()-1).unwrap().parse::<i32>().unwrap();
-                let b = stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap();
+            Instruction::IfLess => {
+                let (a, b) = get_a_b(&stack, 1);
 
-                stack.truncate(stack.len()-2);
-                stack.push((a / b).to_string());
+                if a < b {
+                    ip = get_int_from_stack(&stack, 0) as usize;
+                }
             }
 
             Instruction::Pop => {
@@ -81,32 +108,10 @@ pub fn execute(instructions: &Vec<Instruction>) {
                 stack.push(data.to_owned());
             }
 
-            Instruction::IfEquals => {
-                if stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap() == stack.get(stack.len()-3).unwrap().parse::<i32>().unwrap() {
-                    ip = stack.get(stack.len()-1).unwrap().parse::<usize>().unwrap();
-                }
-            }
-
-            Instruction::IfNequals => {
-                if stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap() != stack.get(stack.len()-3).unwrap().parse::<i32>().unwrap() {
-                    ip = stack.get(stack.len()-1).unwrap().parse::<usize>().unwrap();
-                }
-            }
-
-            Instruction::IfLess => {
-                if stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap() < stack.get(stack.len()-3).unwrap().parse::<i32>().unwrap() {
-                    ip = stack.get(stack.len()-1).unwrap().parse::<usize>().unwrap();
-                }
-            }
-
-            Instruction::IfGreater => {
-                if stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap() > stack.get(stack.len()-3).unwrap().parse::<i32>().unwrap() {
-                    ip = stack.get(stack.len()-1).unwrap().parse::<usize>().unwrap();
-                }
-            }
-
             Instruction::Goto { to } => {
                 ip = *to;
+
+                modify_ip = false;
             }
         }
 

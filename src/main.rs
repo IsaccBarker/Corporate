@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 #![allow(unused_variables)]
 
+pub mod error;
 pub mod email;
 pub mod instruction;
 
@@ -9,6 +10,16 @@ use std::fs;
 use std::process;
 
 fn main() {
+    let mut log_builder = env_logger::builder();
+
+    if cfg!(debug_assertions) {
+        log_builder.filter_level(log::LevelFilter::Debug);
+    } else {
+        log_builder.filter_level(log::LevelFilter::Off);
+    }
+
+    log_builder.init();
+
     let matches = command!()
         .arg(
             arg!(

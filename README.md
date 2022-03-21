@@ -18,10 +18,10 @@ Rust already installed, you can visit [rustup.rs](https://rustup.rs/). You don't
 repository to build Corporate, simply run the command below to fetch, build, and install:
 
 ```bash
-cargo install --git https://github.com/IsaccBarker/Corporate.git
+cargo install --release --git https://github.com/IsaccBarker/Corporate.git
 ```
 
-It's that easy!
+It's that easy! You need to inclue `--release` to get the full experience.
 
 ## How it works
 
@@ -177,23 +177,10 @@ subtract
 discontinue
 ignore
 . Without
-
-multiplication:
-multiple
-times
-emphasize
-boost
-. Of
-
-division:
-divide
-controversial between
-don't like 
-. Over
-
-modulo:
-remainder
 ```
+
+If you want multiplication, division, modulo, or anything else like that, you need to
+build it from addition and subtraction. Have fun!
 
 The result will be popped onto the stack, and the elements that are used
 will be popped off.
@@ -223,21 +210,11 @@ if <egg> correct
 if <egg> affirmitive
 if <egg> correct
 
-if false:
-if <egg> not
-if <egg> false
-if <egg> incorrect
-
 if less than:
 if <egg> doesn't
 if <egg> is worse than
 if <egg> fails to
 if <egg> let's <egg> down
-
-if greater than:
-if <egg> exceeds
-if <egg> is better than
-if <egg> helps us
 ```
 
 ## Goto/Jump
