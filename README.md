@@ -42,6 +42,9 @@ be idented with whitespace (tabs or spaces). The sign off must always be indente
 name and the word above it must be on seperate lines. The seperation of the emails must be three newlines. See the
 below example.
 
+All emails must be sent later than the one that precedes them (see the "Date" field of the email), because this is
+email software that doesn't break the fabric of time and space.
+
 ```
 Subject: Project Delay (Payment Cluster Deployment)
 Original Recipient: N/A
