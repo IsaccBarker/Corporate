@@ -1,3 +1,5 @@
+#[allow(dead_code)]
+
 use chrono::{NaiveDateTime, NaiveDate};
 use regex::Regex;
 

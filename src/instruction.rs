@@ -8,7 +8,11 @@ const POP_RE: &str = r#"\s+(I don't have the bandwidth to|let's drop)\s+/gmi"#;
 const PUSH_RE: &str = r#"\s+(I'd like to consider|bring to attension)\s+/gmi"#;
 // This one is pretty complex, so I've provided a link here
 //     https://regex101.com/r/nEiQLI/1
-const FUNCTION_CALL: &str = r#"((.*see the (last )?(meeting|conference|chat|call|note|letter|download|uplink|conversation|consultation).+referenced (yesterday|today|in this email|.+ ago).+)|(, namely .* (last )?(meeting|conference|chat|call|note|letter|download|uplink|conversation|consultation).+referenced (yesterday|today|in this email|.+ ago).*))"#;
+const FUNCTION_CALL_RE: &str = r#"((.*see the (last )?(meeting|conference|chat|call|note|letter|download|uplink|conversation|consultation).+referenced (yesterday|today|in this email|.+ ago).+)|(, namely .* (last )?(meeting|conference|chat|call|note|letter|download|uplink|conversation|consultation).+referenced (yesterday|today|in this email|.+ ago).*))/gmi"#;
+const IF_EQUALS_RE: &str = r#"if .* (correct|affirmitive)/gmi"#;
+const IF_NEQUALS_RE: &str = r#"if .* (not|false|incorrect)/gmi"#;
+const IF_LESS_RE: &str = r#"if .* (doesn't|is worse than|fails to|let's .* down)/gmi"#;
+const IF_GREATER_RE: &str = r#"if .* (exceeds|is better than|helps us)/gmi"#;
 
 pub enum Instruction {
     CallFunction { class: String, function: String },

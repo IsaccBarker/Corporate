@@ -229,7 +229,6 @@ polish notation.
 
 ```
 if true:
-if
 if <egg> correct
 if <egg> affirmitive
 if <egg> correct
@@ -239,13 +238,13 @@ if <egg> not
 if <egg> false
 if <egg> incorrect
 
-if less than
+if less than:
 if <egg> doesn't
 if <egg> is worse than
 if <egg> fails to
 if <egg> let's <egg> down
 
-if greater than
+if greater than:
 if <egg> exceeds
 if <egg> is better than
 if <egg> helps us
