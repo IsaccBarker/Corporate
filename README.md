@@ -215,7 +215,7 @@ print
 
 These conditionals account for the second and third values at the top of the stack.
 The very top value is used to know which sentense to jump to. It does not use reverse
-polish notation.
+polish notation, and it does not pop the values that are used for the conditional.
 
 ```
 if true:

@@ -6,9 +6,6 @@ const DIV_RE: &str = r#"\s*(divide|controversial between|don't like|\. over)\s*/
 const MOD_RE: &str = r#"\s*(remainder)\s*/gmi"#;
 const POP_RE: &str = r#"\s*(I don't have the bandwidth to|let's drop)\s*/gmi"#;
 const PUSH_RE: &str = r#"\s*(I'd like to consider|bring to attension)\s*/gmi"#;
-// This one is pretty complex, so I've provided a link here
-//     https://regex101.com/r/nEiQLI/1
-// const FUNCTION_CALL_RE: &str = r#"\s*((.*see the (last )?(meeting|conference|chat|call|note|letter|download|uplink|conversation|consultation).+referenced (yesterday|today|in this email|.+ ago).+)|(, namely .* (last )?(meeting|conference|chat|call|note|letter|download|uplink|conversation|consultation).+referenced (yesterday|today|in this email|.+ ago).*))\s*/gmi"#;
 const FUNCTION_CALL_RE: &str = r#"\s*(call|refer|proceed|follow through)\s*"#;
 const IF_EQUALS_RE: &str = r#"\s*if .* (correct|affirmitive)\s*/gmi"#;
 const IF_NEQUALS_RE: &str = r#"\s*if .* (not|false|incorrect)\s*/gmi"#;
@@ -24,11 +21,98 @@ pub enum Instruction {
     Div,
     Pop,
     Push { data: String },
-    FunctionCall,
     IfEquals,
     IfNequals,
     IfLess,
     IfGreater,
-    Goto,
+    Goto { to: usize },
+}
+
+pub fn execute(instructions: &Vec<Instruction>) {
+    let mut stack: Vec<String> = vec![];
+    let mut ip: usize = 0;
+
+    loop {
+        let instruction = instructions.get(ip).unwrap();
+        let modify_ip = false;
+
+        match instruction {
+            Instruction::Print => {
+                println!("{}", stack.get(stack.len()-1).unwrap());
+            }
+
+            Instruction::Add => {
+                let a = stack.get(stack.len()-1).unwrap().parse::<i32>().unwrap();
+                let b = stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap();
+
+                stack.truncate(stack.len()-2);
+                stack.push((a + b).to_string());
+            }
+
+            Instruction::Sub => {
+                let a = stack.get(stack.len()-1).unwrap().parse::<i32>().unwrap();
+                let b = stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap();
+
+                stack.truncate(stack.len()-2);
+                stack.push((a - b).to_string());
+            }
+
+            Instruction::Mult => {
+                let a = stack.get(stack.len()-1).unwrap().parse::<i32>().unwrap();
+                let b = stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap();
+
+                stack.truncate(stack.len()-2);
+                stack.push((a * b).to_string());
+            }
+
+            Instruction::Div => {
+                let a = stack.get(stack.len()-1).unwrap().parse::<i32>().unwrap();
+                let b = stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap();
+
+                stack.truncate(stack.len()-2);
+                stack.push((a / b).to_string());
+            }
+
+            Instruction::Pop => {
+                stack.pop();
+            }
+
+            Instruction::Push { data } => {
+                stack.push(data.to_owned());
+            }
+
+            Instruction::IfEquals => {
+                if stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap() == stack.get(stack.len()-3).unwrap().parse::<i32>().unwrap() {
+                    ip = stack.get(stack.len()-1).unwrap().parse::<usize>().unwrap();
+                }
+            }
+
+            Instruction::IfNequals => {
+                if stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap() != stack.get(stack.len()-3).unwrap().parse::<i32>().unwrap() {
+                    ip = stack.get(stack.len()-1).unwrap().parse::<usize>().unwrap();
+                }
+            }
+
+            Instruction::IfLess => {
+                if stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap() < stack.get(stack.len()-3).unwrap().parse::<i32>().unwrap() {
+                    ip = stack.get(stack.len()-1).unwrap().parse::<usize>().unwrap();
+                }
+            }
+
+            Instruction::IfGreater => {
+                if stack.get(stack.len()-2).unwrap().parse::<i32>().unwrap() > stack.get(stack.len()-3).unwrap().parse::<i32>().unwrap() {
+                    ip = stack.get(stack.len()-1).unwrap().parse::<usize>().unwrap();
+                }
+            }
+
+            Instruction::Goto { to } => {
+                ip = *to;
+            }
+        }
+
+        if modify_ip {
+            ip += 1;
+        }
+    }
 }
 
