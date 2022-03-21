@@ -9,7 +9,8 @@ your pointlessly formal and not at all understandable communications can also fu
 language. Take that HR!
 
 Corporate is an entirely stack based language, for extra frustration (at least from certain programming
-backgrounds).
+backgrounds). It does not use reverse polish notation (e.g. if the stack is `1, 2`, you will get `1 < 2`,
+not `2 < 1`).
 
 ## Building
 Build it like you would any Rust program; install the right tool chain, build, and run! If you don't have
@@ -84,6 +85,8 @@ Code execution will always start with the first namespace, and the first functio
 `<eggs>` is used to signifiy that anything at all can go here (sans a new line). It will simply look for the word it
 expects next, and continue from there. That way, it's possible to have full creative expression in your locked down
 corporate email.
+
+`<egg>` signifies a single word, thats inclusion is optional.
 
 ### Namespaces
 
@@ -216,6 +219,49 @@ state
 tell
 say
 print
+```
+
+## Conditionals
+
+These conditionals account for the second and third values at the top of the stack.
+The very top value is used to know which sentense to jump to. It does not use reverse
+polish notation.
+
+```
+if true:
+if
+if <egg> correct
+if <egg> affirmitive
+if <egg> correct
+
+if false:
+if <egg> not
+if <egg> false
+if <egg> incorrect
+
+if less than
+if <egg> doesn't
+if <egg> is worse than
+if <egg> fails to
+if <egg> let's <egg> down
+
+if greater than
+if <egg> exceeds
+if <egg> is better than
+if <egg> helps us
+```
+
+## Goto/Jump
+
+You can jump to the sentense in the function that is specified at the top of the
+stack like so:
+
+```
+goto
+go to
+jump to
+arive at
+recenter
 ```
 
 # That's about it!
