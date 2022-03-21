@@ -69,7 +69,7 @@ Date: 7/28, 2028, 10:28
 
 Hey Vivian,
     Hope you're having a wonderful day, and that this email finds you well. Concerning those two points you've brought up
-concerning an unexpected that you and your team have encounted. We don't currently have any leway here, as our next deployment
+concerning an unexpected that you and your team have encounted, we don't currently have any leway here, as our next deployment
 is only four days away. With two more serious production-exclusive bugs, I'm afraid that this won't track well with your
 record here. We can keep deploying the legacy code, but that would require us providing very slow service. It's always an option,
 but it would be much better if you could have your team crunch, and get us the software we need to keep providing the exelent
