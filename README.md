@@ -101,7 +101,7 @@ Each function is defined by a block of text starting with a tab and ending with 
 You can call a function in another namespace by saying:
 
 ```
-(<eggs>see the <function name> <eggs> where our interation stated <namespace ID><eggs>)
+(<eggs>see the <function name> <eggs> referenced <namespace ID><eggs>)
 , namely the <function name> <eggs> referenced <namespace ID>
 ```
 
