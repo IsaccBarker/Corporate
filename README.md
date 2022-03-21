@@ -104,32 +104,19 @@ The name of a namespace is taken either from the parentheses after the subject, 
 
 Each function is defined by a block of text starting with a tab and ending with a new line.
 
-You can call a function in another namespace by saying:
+You can call a function with the below keywords. The value at the top of the stack is the function to call, and the value
+directly below it is the namespace. If you feel inclined, you can specify that you want to call a function in the current
+namespace with a 0. Thus, the namespace index starts at one. But this wouldn't be a corporate language if it wasn't
+bassackward, so the function index starts at zero. You're welcome :)
+
+Granted, this gives you some cool functionality like being able to dynamically figure out which function you want to call,
+but it's a really good way to shoot yourself in the foot. If you like that, then go ahead.
 
 ```
-(<eggs>see the <function name> <eggs> referenced <namespace ID><eggs>)
-, namely the <function name> <eggs> referenced <namespace ID>
-```
-
-In order to specifiy a function name, you must use the below list. To specify a namespace in the future,
-just the below list as is. If you want to reference an email in the past, just prefix it with `last`.
-
-1. x = 1, "meeting"
-2. x = 2, "conference"
-3. x = 3, "chat"
-4. x = 4, "call"
-5. x = 5, "note"
-6. x = 6, "letter"
-7. x = 7, "download"
-8. x = 8, "uplink"
-9. x = 9, "conversation"
-10. x = 10, "consultation"
-
-You can call a function in the same namespace by saying:
-
-```
-(<eggs>see the <function name><eggs> iteration stated in this email<eggs>)
-, namely the <function name><eggs> requirement <eggs> refered in this email
+call
+refer
+proceed
+follow through
 ```
 
 ## Types
@@ -261,7 +248,7 @@ stack like so:
 ```
 goto
 go to
-jump to
+jump
 arive at
 recenter
 ```
