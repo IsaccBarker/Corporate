@@ -36,7 +36,7 @@ cannot call other corporate scripts.
 Programming languages typically do not sound like human speach, although some try (see AppleScript), most fail.
 Corporate actually makes you sound like a real person.
 
-The corperation that these emails are being sent from is *very stringent* on their formatting. Each paragraph must
+The corporation that these emails are being sent from is *very stringent* on their formatting. Each paragraph must
 be idented with whitespace (tabs or spaces). The sign off must always be indented one tab (or space) in, and your
 name and the word above it must be on seperate lines. The seperation of the emails must be three newlines. See the
 below example.
