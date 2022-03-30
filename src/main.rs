@@ -4,6 +4,7 @@
 pub mod error;
 pub mod email;
 pub mod instruction;
+pub mod vm;
 
 use clap::{arg, command};
 use std::fs;
@@ -40,6 +41,7 @@ fn main() {
         }
     };
 
-    email::get_classes(&source);
+    let emails = email::get_emails(&source);
+    let instructions = instruction::get_instructions(&emails);
 }
 

@@ -126,15 +126,19 @@ enclosed within quotes, and integers being just numbers.
 
 When referencing a namespace, put the word `reference` before the namespace identifier.
 
-If you don't wish to use a Integer literal, as it might not sound professional, you can do what you might do in the
-Rockstar programming language and modulo 10 the length of words, followed up by a period:
-
+If you don't wish to use a Integer literal, as it might not sound professional, you can specify a some words at
+the length that you wish the corasponding digit to be. The equation used to calculate this is `|n%(7-n)+i|`. `i`
+is the index of the word, and n is the length of the word.
 ```
 don't feel comfortable
 
-4 % 10   4 % 10   10 % 10
+|4%(7-4)+0|   |4%(7-4)+1|   |10%(7-10)+2|
+|4%3+0|   |4%3+1|   |4%-3+2|
+|4%3|   |4%4|   |4%-1|
+|1|   |0|   |0|
+1   0   0
 
-440
+100
 ```
 
 ## Things
@@ -215,19 +219,6 @@ if <egg> doesn't
 if <egg> is worse than
 if <egg> fails to
 if <egg> let's <egg> down
-```
-
-## Goto/Jump
-
-You can jump to the sentense in the function that is specified at the top of the
-stack like so:
-
-```
-goto
-go to
-jump
-arive at
-recenter
 ```
 
 # That's about it!

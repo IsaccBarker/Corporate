@@ -25,14 +25,11 @@ impl Email {
     }
 }
 
-pub fn get_classes(source: &String) {
+pub fn get_emails(source: &String) -> Vec<Email> {
     let part_re = Regex::new(&format!("{}\n{}", HEADERS_RE, EMAIL_SOURCE_RE)).unwrap();
     let header_re = Regex::new(HEADERS_RE).unwrap();
     let email_source_re = Regex::new(EMAIL_SOURCE_RE).unwrap();
-
     let mut emails: Vec<Email> = vec![];
-    let mut headers: Vec<String> = vec![];
-    let mut email_sources: Vec<String> = vec![];
 
     for part_match in part_re.captures_iter(source) {
         let part = part_match.get(0).unwrap().as_str().to_string();
@@ -64,6 +61,6 @@ pub fn get_classes(source: &String) {
         emails.push(email);
     }
 
-    println!("{:?}", emails);
+    emails
 }
 
